@@ -1,0 +1,75 @@
+---
+title: "DC Bikesharing Analysis"
+author: "Seth Taylor"
+date: "September 15, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Introduction
+
+
+```{r Data}
+bikes <- read.csv("C:/Users/Seth.Taylor/Documents/Github/Kaggle---DC-City-Bikesharing/Data/hour.csv")
+```
+
+##Data Cleaning
+
+```{r Data Shape}
+#Looking at shape of data and checking that there's no missing data
+head(bikes)
+
+str(bikes)
+
+all(complete.cases(bikes))
+```
+
+```{r Convert Variables}
+#Convert categorical variables to factor
+factors <- c("season", "yr", "mnth", "hr", "holiday", "weekday", "workingday", "weathersit")
+bikes[factors] <- lapply(bikes[factors], as.factor)
+```
+
+##EDA
+
+```{r Summary}
+summary(bikes)
+```
+
+```{r Mean Bike Usage Per Day by Type}
+ggplot(bikes, aes(dteday)) + stat_summary(aes(y = casual, group = 1, color = "casual"), fun.y = mean, geom = "line") + stat_summary(aes(y = registered, group = 1, color = "registered"), fun.y = mean, geom = "line") + theme(axis.text.x = element_blank())
+```
+
+```{r Boxplot: Count per Month}
+boxplot(cnt~mnth, data = bikes)
+```
+
+```{r Boxplot: Count by Season}
+boxplot(cnt~season, data = bikes)
+```
+
+```{r Boxplot: Count by Weekday}
+boxplot(cnt~weekday, data = bikes)
+```
+
+```{r Boxplot: Count by Workingday}
+boxplot(cnt~workingday, data = bikes)
+```
+
+```{r Boxplot: Count by Holiday}
+boxplot(cnt~holiday, bikes)
+```
+```{r Boxplot: Count by Hour of Day}
+boxplot(cnt ~ hr, data = bikes)
+```
+
+
+```{r Linear Model}
+#Creating linear model to identify statistically signficant factors influencing count of bikes
+fit <- lm(cnt ~ season + hr + holiday + workingday + atemp + hum + windspeed + weathersit, data = bikes)
+
+summary(fit)
+```
