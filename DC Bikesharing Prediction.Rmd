@@ -20,7 +20,7 @@ bikes <- read.csv("C:/Users/Seth.Taylor/Documents/Github/Kaggle---DC-City-Bikesh
 
 ##Data Cleaning
 
-```{r Data Shape}
+```{r Data_Shape}
 #Looking at shape of data and checking that there's no missing data
 head(bikes)
 
@@ -29,7 +29,7 @@ str(bikes)
 all(complete.cases(bikes))
 ```
 
-```{r Convert Variables}
+```{r Convert_Variables}
 #Convert categorical variables to factor
 factors <- c("season", "yr", "mnth", "hr", "holiday", "weekday", "workingday", "weathersit")
 bikes[factors] <- lapply(bikes[factors], as.factor)
@@ -46,32 +46,32 @@ library(ggplot2)
 ggplot(bikes, aes(dteday)) + stat_summary(aes(y = casual, group = 1, color = "casual"), fun.y = mean, geom = "line") + stat_summary(aes(y = registered, group = 1, color = "registered"), fun.y = mean, geom = "line") + theme(axis.text.x = element_blank())
 ```
 
-```{r Count per Month}
+```{r Count_per_Month}
 boxplot(cnt~mnth, data = bikes)
 ```
 
-```{r Count by Season}
+```{r Count_by_Season}
 boxplot(cnt~season, data = bikes)
 ```
 
-```{r Count by Weekday}
+```{r Count_by_Weekday}
 boxplot(cnt~weekday, data = bikes)
 ```
 
-```{r Count by Workingday}
+```{r Count_by_Workingday}
 boxplot(cnt~workingday, data = bikes)
 ```
 
-```{r Count by Holiday}
+```{r Count_by_Holiday}
 boxplot(cnt~holiday, bikes)
 ```
 
-```{r Count by Hour of Day}
+```{r Count_by_Hours}
 boxplot(cnt ~ hr, data = bikes)
 ```
 
 
-```{r Linear Model}
+```{r Linear_Model}
 #Creating linear model to identify statistically signficant factors influencing count of bikes
 fit <- lm(cnt ~ season + hr + holiday + workingday + atemp + hum + windspeed + weathersit, data = bikes)
 

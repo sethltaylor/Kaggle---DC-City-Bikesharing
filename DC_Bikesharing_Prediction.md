@@ -139,42 +139,42 @@ ggplot(bikes, aes(dteday)) + stat_summary(aes(y = casual, group = 1, color = "ca
 boxplot(cnt~mnth, data = bikes)
 ```
 
-![](figs/Count per Month-1.png)<!-- -->
+![](figs/Count_per_Month-1.png)<!-- -->
 
 
 ```r
 boxplot(cnt~season, data = bikes)
 ```
 
-![](figs/Count by Season-1.png)<!-- -->
+![](figs/Count_by_Season-1.png)<!-- -->
 
 
 ```r
 boxplot(cnt~weekday, data = bikes)
 ```
 
-![](figs/Count by Weekday-1.png)<!-- -->
+![](figs/Count_by_Weekday-1.png)<!-- -->
 
 
 ```r
 boxplot(cnt~workingday, data = bikes)
 ```
 
-![](figs/Count by Workingday-1.png)<!-- -->
+![](figs/Count_by_Workingday-1.png)<!-- -->
 
 
 ```r
 boxplot(cnt~holiday, bikes)
 ```
 
-![](figs/Count by Holiday-1.png)<!-- -->
+![](figs/Count_by_Holiday-1.png)<!-- -->
 
 
 ```r
 boxplot(cnt ~ hr, data = bikes)
 ```
 
-![](figs/Count by Hour of Day-1.png)<!-- -->
+![](figs/Count_by_Hours-1.png)<!-- -->
 
 
 
