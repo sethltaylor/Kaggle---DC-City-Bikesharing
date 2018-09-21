@@ -2,11 +2,13 @@
 title: "DC Bikesharing Analysis"
 author: "Seth Taylor"
 date: "September 15, 2018"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "figs/", dev = c('png'))
 ```
 
 ##Introduction
@@ -44,26 +46,27 @@ library(ggplot2)
 ggplot(bikes, aes(dteday)) + stat_summary(aes(y = casual, group = 1, color = "casual"), fun.y = mean, geom = "line") + stat_summary(aes(y = registered, group = 1, color = "registered"), fun.y = mean, geom = "line") + theme(axis.text.x = element_blank())
 ```
 
-```{r Boxplot: Count per Month}
+```{r Count per Month}
 boxplot(cnt~mnth, data = bikes)
 ```
 
-```{r Boxplot: Count by Season}
+```{r Count by Season}
 boxplot(cnt~season, data = bikes)
 ```
 
-```{r Boxplot: Count by Weekday}
+```{r Count by Weekday}
 boxplot(cnt~weekday, data = bikes)
 ```
 
-```{r Boxplot: Count by Workingday}
+```{r Count by Workingday}
 boxplot(cnt~workingday, data = bikes)
 ```
 
-```{r Boxplot: Count by Holiday}
+```{r Count by Holiday}
 boxplot(cnt~holiday, bikes)
 ```
-```{r Boxplot: Count by Hour of Day}
+
+```{r Count by Hour of Day}
 boxplot(cnt ~ hr, data = bikes)
 ```
 
