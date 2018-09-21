@@ -40,6 +40,7 @@ summary(bikes)
 ```
 
 ```{r Mean Bike Usage Per Day by Type}
+library(ggplot2)
 ggplot(bikes, aes(dteday)) + stat_summary(aes(y = casual, group = 1, color = "casual"), fun.y = mean, geom = "line") + stat_summary(aes(y = registered, group = 1, color = "registered"), fun.y = mean, geom = "line") + theme(axis.text.x = element_blank())
 ```
 
