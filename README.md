@@ -10,7 +10,7 @@ The data used is a combination of 2011 and 2012 data for Capital Bikeshare along
 I use the hour.csv file for this analysis which contains the following variables:
 - instant: record index
 - dteday : date
-- season : season (1:springer, 2:summer, 3:fall, 4:winter)
+- season : season (1:spring, 2:summer, 3:fall, 4:winter)
 - yr : year (0: 2011, 1:2012)
 - mnth : month ( 1 to 12)
 - hr : hour (0 to 23)
